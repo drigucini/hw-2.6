@@ -3,32 +3,37 @@ package pro.sky.Employeeshomework;
 import java.util.Objects;
 
 public class Employee {
-    private final String fullName;
+    private final String firstName;
+    private final String lastName;
 
-    public Employee(String fullName) {
-        this.fullName = fullName;
+
+    public Employee(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
-    public String getFullName() {
-        return this.fullName;
+    public String getFirstName() {
+        return firstName;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
 
     @Override
     public String toString() {
-        return "Full name: " + fullName;
+        return "Full name: " + firstName + " " + lastName;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        return fullName.equals(employee.fullName);
+        if (!(o instanceof Employee employee)) return false;
+        return Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fullName);
+        return Objects.hash(firstName, lastName);
     }
 }
